@@ -1,0 +1,25 @@
+.page {
+  // .page__sc
+  &__sc {
+    min-height: 100vh;
+    padding: 150px 0px;
+    background: hsl(207, 26%, 17%);
+    transition: all 0.5s ease 0s;
+  }
+}
+.sc {
+  // .sc__container
+  &__container {
+  }
+  // .sc__body
+  &__body {
+  }
+}
+
+body {
+  &._active {
+    .page__sc {
+      background: hsl(0, 0%, 98%);
+    }
+  }
+}

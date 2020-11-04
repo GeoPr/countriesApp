@@ -1,0 +1,105 @@
+.page {
+  // .page__country
+  &__country {
+    min-height: 100vh;
+    padding: 150px 0px;
+    background: hsl(207, 26%, 17%);
+    transition: all 0.5s ease 0s;
+  }
+}
+.country {
+  // .country__container
+  &__container {
+  }
+  // .country__body
+  &__body {
+  }
+  // .country__button
+  &__button {
+    height: 50px;
+    width: 100px;
+    box-shadow: 0px 0px 5px rgba($color: #000, $alpha: 0.5);
+    border-radius: 5px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0px 0px 50px 0px;
+    transition: all 0.5s ease 0s;
+  }
+  // .country__item
+  &__item {
+    display: grid;
+    grid-template: auto / repeat(2, 1fr);
+    align-items: center;
+    @media (max-width: 991.98px) {
+      grid-template: auto / 1fr;
+      row-gap: 50px;
+    }
+  }
+  // .country__flag
+  &__flag {
+    img {
+      width: 100%;
+      object-fit: cover;
+    }
+  }
+  // .country__info
+  &__info {
+    display: grid;
+    @media (min-width: 991.98px) {
+      justify-self: end;
+    }
+  }
+}
+.info-country {
+  // .info-country__t
+  &__t {
+    font-size: 2rem;
+    margin: 0px 0px 30px 0px;
+    transition: all 0.5s ease 0s;
+  }
+  // .info-country__list
+  &__list {
+    display: grid;
+    grid-template: auto / repeat(2, 1fr);
+    column-gap: 50px;
+    row-gap: 15px;
+    margin: 0px 0px 50px 0px;
+    li {
+      font-size: 14px;
+      transition: all 0.5s ease 0s;
+      span {
+        color: hsl(0, 0%, 52%);
+      }
+    }
+    @media (max-width: 767.98px) {
+      grid-template: auto / 1fr;
+    }
+  }
+  // .info-country__border
+  &__border {
+    display: grid;
+    grid-template: auto / repeat(3, 1fr);
+    align-items: center;
+    column-gap: 10px;
+    row-gap: 10px;
+    span {
+      padding: 10px 0px;
+      text-align: center;
+      color: hsl(0, 0%, 52%);
+      box-shadow: 0px 0px 5px rgba($color: #000, $alpha: 0.5);
+    }
+  }
+}
+
+body {
+  &._active {
+    .page__country {
+      background: hsl(0, 0%, 98%);
+      color: hsl(200, 15%, 8%);
+    }
+    .country__button {
+      color: hsl(200, 15%, 8%);
+    }
+  }
+}

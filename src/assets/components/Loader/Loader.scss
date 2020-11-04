@@ -1,0 +1,24 @@
+.sc {
+  // .sc__loader
+  &__loader {
+    display: flex;
+    justify-content: center;
+  }
+}
+.loader-sc {
+  // .loader-sc__body
+  &__body {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    border: 3px solid #fff;
+    border-color: #fff transparent #fff transparent;
+    animation: rotating 1s linear 0s infinite;
+  }
+}
+
+@keyframes rotating {
+  to {
+    transform: rotate(360deg);
+  }
+}
