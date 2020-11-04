@@ -1,20 +1,17 @@
-import { Loader_T, loader_SHOW_LOADER, loader_HIDE_LOADER } from './actions';
+import { TLoader, SHOW_LOADER, HIDE_LOADER } from './actions';
 interface IInitalState {
   isLoading: boolean;
 }
 
 const initalState: IInitalState = { isLoading: false };
 
-export const loaderReducer = (
-  state: IInitalState = initalState,
-  action: Loader_T,
-): IInitalState => {
+export const loaderReducer = (state: IInitalState = initalState, action: TLoader): IInitalState => {
   switch (action.type) {
-    case loader_SHOW_LOADER: {
+    case SHOW_LOADER: {
       return { ...state, isLoading: true };
     }
 
-    case loader_HIDE_LOADER: {
+    case HIDE_LOADER: {
       return { ...state, isLoading: false };
     }
 
