@@ -5,14 +5,14 @@ import { TApp } from '../../redux/reducers/rootReducer';
 import './Country.scss';
 
 export const Country = () => {
-  const { id } = useParams<any>();
-  const countries = useSelector((state: TApp) => state.countries.countries);
+  const { id } = useParams<{ id: string }>();
+  const { countries } = useSelector((state: TApp) => state.countries);
 
-  if (!countries || !countries[id]) {
+  if (!countries) {
     return <Redirect to="/" />;
   }
 
-  const country = countries[id];
+  const country = countries.find(country => country.id === +id)!;
 
   return (
     <section className="page__country country">
@@ -53,12 +53,16 @@ export const Country = () => {
                   Capital: <span>{country.capital}</span>
                 </li>
               </ul>
-              <div className="info-country__border">
-                Border Countries:
-                {country.borders.map((b: string, idx: number) => (
-                  <span key={idx}>{b}</span>
-                ))}
-              </div>
+              {country.borders.length ? (
+                <div className="info-country__border">
+                  Border Countries:
+                  {country.borders.map((b: string, idx: number) => (
+                    <span key={idx}>{b}</span>
+                  ))}
+                </div>
+              ) : (
+                ''
+              )}
             </div>
           </div>
         </div>

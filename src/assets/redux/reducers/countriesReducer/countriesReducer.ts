@@ -1,4 +1,6 @@
-import { TCountries, GET_COUNTRIES, FILTER_BY_COUNTRY, FILTER_BY_REGION } from './actions';
+import { TActions } from './../rootReducer';
+import { GET_COUNTRIES, FILTER_BY_COUNTRY, FILTER_BY_REGION } from './actionsTypes';
+import * as actions from './actions';
 
 interface ICountriesItemCurrencies {
   code: string;
@@ -20,7 +22,8 @@ interface ICountriesItemRegionalBlocs {
   otherNames: any[];
 }
 
-interface ICountriesItem {
+export interface ICountriesItem {
+  id: number;
   alpha2Code: string;
   alpha3Code: string;
   altSpellings: Array<string>;
@@ -68,9 +71,11 @@ const initalState: IInitalState = {
   filteredCountries: [],
 };
 
+type ActionsTypes = TActions<typeof actions>;
+
 export const countriesReducer = (
   state: IInitalState = initalState,
-  action: TCountries,
+  action: ActionsTypes,
 ): IInitalState => {
   switch (action.type) {
     case GET_COUNTRIES: {

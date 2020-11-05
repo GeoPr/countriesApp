@@ -1,18 +1,11 @@
-export const SHOW_LOADER = 'SHOW_LOADER';
-export const HIDE_LOADER = 'HIDE_LOADER';
+import { SHOW_LOADER, HIDE_LOADER } from './actionsTypes';
 
-interface TShowLoader {
-  type: typeof SHOW_LOADER;
-}
-export const showLoader = (): TShowLoader => ({
-  type: SHOW_LOADER,
-});
+export const showLoader = () =>
+  ({
+    type: SHOW_LOADER,
+  } as const);
 
-interface THideLoader {
-  type: typeof HIDE_LOADER;
-}
-export const hideLoader = (): THideLoader => ({
-  type: HIDE_LOADER,
-});
-
-export type TLoader = TShowLoader | THideLoader;
+export const hideLoader = () =>
+  ({
+    type: HIDE_LOADER,
+  } as const);

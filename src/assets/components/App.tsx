@@ -14,9 +14,18 @@ const App: React.FC = () => {
   useEffect(() => {
     (async () => {
       dispatch(showLoader());
+
       await fetch('https://restcountries.eu/rest/v2/all')
         .then(response => response.json())
-        .then(countries => dispatch(getCountries(countries)));
+        .then(countries => {
+          const updatedCountries = countries.map((country: any, idx: number) => ({
+            ...country,
+            id: idx,
+          }));
+
+          dispatch(getCountries(updatedCountries));
+        });
+
       dispatch(hideLoader());
     })();
   }, []);

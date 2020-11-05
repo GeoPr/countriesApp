@@ -6,7 +6,7 @@ import { TApp } from '../../redux/reducers/rootReducer';
 import { Loader } from '../Loader/Loader';
 
 export const Countries = () => {
-  const countries = useSelector((state: TApp) => state.countries);
+  const { filteredCountries } = useSelector((state: TApp) => state.countries);
   const { isLoading } = useSelector((state: TApp) => state.loader);
 
   return (
@@ -15,10 +15,10 @@ export const Countries = () => {
         <Loader />
       ) : (
         <div className="countries-sc__items">
-          {countries.filteredCountries.length ? (
-            countries.filteredCountries.map((country, idx) => {
+          {filteredCountries.length ? (
+            filteredCountries.map(country => {
               return (
-                <Link to={`/country/${idx}`} key={idx} className="countries-sc__item">
+                <Link to={`/country/${country.id}`} key={country.id} className="countries-sc__item">
                   <div className="countries-sc__img">
                     <img src={country.flag} alt="" />
                   </div>
