@@ -14,7 +14,6 @@ type TProperties<T> = T extends {
 }
   ? U
   : never;
-
 export type TActions<
   T extends {
     [key: string]: (...args: any[]) => any;

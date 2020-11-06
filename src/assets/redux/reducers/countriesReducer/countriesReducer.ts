@@ -1,5 +1,10 @@
 import { TActions } from './../rootReducer';
-import { GET_COUNTRIES, FILTER_BY_COUNTRY, FILTER_BY_REGION } from './actionsTypes';
+import {
+  GET_COUNTRIES,
+  FILTER_BY_COUNTRY,
+  FILTER_BY_REGION,
+  CHANGE_COUNTRIES,
+} from './actionsTypes';
 import * as actions from './actions';
 
 interface ICountriesItemCurrencies {
@@ -73,6 +78,8 @@ const initalState: IInitalState = {
 
 type ActionsTypes = TActions<typeof actions>;
 
+const countriesPerPage = 20;
+
 export const countriesReducer = (
   state: IInitalState = initalState,
   action: ActionsTypes,
@@ -83,7 +90,7 @@ export const countriesReducer = (
 
       return {
         countries,
-        filteredCountries: countries,
+        filteredCountries: countries.slice(0, 20),
       };
     }
 
@@ -112,6 +119,27 @@ export const countriesReducer = (
         ...state,
         filteredCountries,
       };
+    }
+
+    case CHANGE_COUNTRIES: {
+      const { idx } = action.payload;
+
+      if (idx !== 0) {
+        const filteredCountries = state.countries.slice(
+          countriesPerPage * idx,
+          countriesPerPage * idx + countriesPerPage,
+        );
+
+        return {
+          ...state,
+          filteredCountries,
+        };
+      } else {
+        return {
+          ...state,
+          filteredCountries: state.countries.slice(0, 20),
+        };
+      }
     }
 
     default:
