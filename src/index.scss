@@ -4,10 +4,13 @@
 // VARS \\
 // ================================================================================================================================================================================================================================================================================================================================
 // FONTS \\
+@import './assets/scss/fonts';
+
 //** GOOGLE FONTS **\\
 //! &display=swap&subset=cyrillic-ext
 @import url('https://fonts.googleapis.com/css?family=Nunito+Sans:300,600,800&display=swap&subset=cyrillic-ext');
 //** GOOGLE FONTS **\\
+
 // DEFAULT FONT \\
 $fontFamily: 'Nunito Sans';
 $fontSize: 14;
