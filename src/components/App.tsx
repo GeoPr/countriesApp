@@ -1,12 +1,12 @@
-import React, { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import { Route, Switch } from 'react-router-dom';
-import { getCountries } from '../redux/reducers/countriesReducer/actions';
-import { hideLoader, showLoader } from '../redux/reducers/loaderReducer/actions';
-import './App.scss';
-import { Country } from './Country/Country';
-import { Header } from './Header/Header';
-import { Home } from './Home/Home';
+import React, { useEffect } from 'react'
+import { useDispatch } from 'react-redux'
+import { Route, Switch } from 'react-router-dom'
+import { getCountries } from '../redux/reducers/countriesReducer/actions'
+import { hideLoader, showLoader } from '../redux/reducers/loaderReducer/actions'
+import { Country } from './Country/Country'
+import { Header } from './Header/Header'
+import { Home } from './Home/Home'
+import './App.scss'
 
 const App: React.FC = () => {
   const dispatch = useDispatch();
