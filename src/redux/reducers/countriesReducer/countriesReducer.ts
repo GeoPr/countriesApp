@@ -97,23 +97,26 @@ export const countriesReducer = (
     case FILTER_BY_COUNTRY: {
       const { country } = action.payload;
 
-      const filteredCountries = filterCountries(state.countries, 'name', country);
+      const filteredCountries = filterCountries(
+        state.countries,
+        'name',
+        country,
+      );
 
       return {
         ...state,
         filteredCountries,
       };
-
-      // return {
-      //   ...state,
-      //   filteredCountries: filterCountries(state.countries, 'name', action.payload.country),
-      // };
     }
 
     case FILTER_BY_REGION: {
       const { region } = action.payload;
 
-      const filteredCountries = filterCountries(state.countries, 'region', region);
+      const filteredCountries = filterCountries(
+        state.countries,
+        'region',
+        region,
+      );
 
       return {
         ...state,
@@ -134,21 +137,28 @@ export const countriesReducer = (
           ...state,
           filteredCountries,
         };
-      } else {
-        return {
-          ...state,
-          filteredCountries: state.countries.slice(0, 20),
-        };
       }
+
+      return {
+        ...state,
+        filteredCountries: state.countries.slice(0, countriesPerPage),
+      };
     }
 
-    default:
+    default: {
       return state;
+    }
   }
 };
 
-function filterCountries(countries: any[], countryParam: string, filterParam: string) {
+function filterCountries(
+  countries: any[],
+  countryParam: string,
+  filterParam: string,
+) {
   return countries.filter(country => {
-    return country[countryParam].toLowerCase().includes(filterParam.toLowerCase());
+    return country[countryParam]
+      .toLowerCase()
+      .includes(filterParam.toLowerCase());
   });
 }

@@ -71,6 +71,10 @@
     text-transform: uppercase;
     letter-spacing: 5px;
     margin: 50px 0px 0px 0px;
+    text-align: center;
+    @media (max-width: 767.98px) {
+      font-size: 2rem;
+    }
   }
 }
 
